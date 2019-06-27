@@ -5,6 +5,15 @@ def prompt(string)
   Kernel.puts "==> #{string}"
 end
 
+def number_in_array(last_number, array)
+  first_five = array[0..4]
+  if first_five.include?(last_number)
+    "The number #{last_number} appears in #{first_five}."
+  else
+    "The number #{last_number} does not appear in #{first_five}."
+  end
+end
+
 loop do
 prompt("Enter the #{POSITION[numbers.size]} number: ")
 
@@ -23,5 +32,6 @@ prompt("Enter the #{POSITION[numbers.size]} number: ")
   end
 end
 
+last_number = numbers[-1]
 
-p numbers
+puts number_in_array(last_number, numbers)
