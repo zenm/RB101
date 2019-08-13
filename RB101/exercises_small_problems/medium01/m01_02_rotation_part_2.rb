@@ -15,16 +15,15 @@ end
 def rotate_rightmost_digits(target_num, rotate_num)
   negative_index = rotate_num * -1
   array_to_rotate = target_num.to_s.split('')[negative_index..-1]
-  first_str = target_num.to_s.split('')[0..negative_index].join('')
+  first_str = target_num.to_s.split('')[0...negative_index].join('')
   rotate_str = rotate_array(array_to_rotate).join('')
   first_str.concat(rotate_str).to_i
-
 end
 
-p rotate_rightmost_digits(735291, 1) #== 735291
-p rotate_rightmost_digits(735291, 2) #== 735219
-p rotate_rightmost_digits(735291, 3) #== 735912
-p rotate_rightmost_digits(735291, 4) #== 732915
-p rotate_rightmost_digits(735291, 5) #== 752913
-p rotate_rightmost_digits(735291, 6) #== 352917
+puts rotate_rightmost_digits(735291, 1) == 735291
+puts rotate_rightmost_digits(735291, 2) == 735219
+puts rotate_rightmost_digits(735291, 3) == 735912
+puts rotate_rightmost_digits(735291, 4) == 732915
+puts rotate_rightmost_digits(735291, 5) == 752913
+puts rotate_rightmost_digits(735291, 6) == 352917
 
