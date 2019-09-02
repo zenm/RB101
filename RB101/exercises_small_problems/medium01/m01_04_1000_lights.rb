@@ -23,3 +23,54 @@
 # With 10 lights, 3 lights are left on: lights 1, 4, and 9. The return value is [1, 4, 9].
 
 # Notes
+# input
+    # array from 1 to total_number_switches
+    # they're all off
+    # first loop
+        # toggle
+    # second loop
+        # toggle every second
+    # third
+        # toggle every third
+    # up until total_number_switches
+# output
+    # the ordinal number of lights that are on after all passes
+
+def total_switches(total_number_switches)
+  output = []
+  1.upto(total_number_switches) { |n| output << "off"}
+  output
+end
+
+def swapped_switches(array)
+  1.upto(array.size) do |outer_num|
+    1.upto(array.size) do |inner_num|
+    #   puts "outer: #{outer_num}"
+    #   puts "inner: #{inner_num}"
+      if inner_num % outer_num == 0
+        # puts"You'd toggle"
+        array[inner_num-1] = toggle(array[inner_num - 1])
+      end
+    end
+  end
+  array
+end
+
+def toggle(on_off)
+  on_off == "off" ? "on" : "off"
+end
+
+def switches(number)
+  on_switches = []
+  array_switches = swapped_switches(total_switches(number))
+  array_switches.each_with_index do |elem, index|
+    if elem == "on"
+      on_switches << index + 1
+    end
+  end
+  on_switches
+end
+
+p switches(5)
+p switches(1000)
+
