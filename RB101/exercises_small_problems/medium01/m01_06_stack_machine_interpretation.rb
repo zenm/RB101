@@ -43,29 +43,44 @@ def print_register (value)
   puts value.to_s
 end
 
-def push_to_stack (value)
-
-end
-
 def minilang (string)
   split_values = string.upcase.split
   stack = []
   register = 0
   
   split_values.each do |value|
-
     case value 
     when "PRINT"
       print_register(register)
     when /\d+/
-      register = value
+      register = value.to_i
     when "PUSH"
       stack << register
+    when "POP"
+      register = stack.pop.to_i
+    when "ADD"
+      register = stack.pop + register
+    when "SUB"
+      register = register - stack.pop
+    when "MULT"
+      register = stack.pop * register
+    when "DIV"
+      register = register / stack.pop 
+    when "MOD"
+      register = register % stack.pop
     end
   end
 end
 
 # minilang ('PRINT')
 # minilang ('5 PRINT')
-minilang ('5 PUSH')
+# minilang('5 PUSH 3 MULT PRINT')
+# minilang('5 PRINT PUSH 3 PRINT')
+# minilang('5 PRINT PUSH 3 PRINT ADD PRINT')
+# minilang('5 PUSH POP PRINT')
+# minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT')
+# minilang('3 PUSH PUSH 7 DIV MULT PRINT ')
+# minilang('4 PUSH PUSH 7 MOD MULT PRINT ')
+minilang('-3 PUSH 5 SUB PRINT')
+# minilang('6 PUSH')
 
